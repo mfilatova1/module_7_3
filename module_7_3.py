@@ -19,12 +19,11 @@ class WordsFinder:
 
     def find(self, word):
         result = {}
-        word = word.lower()
-        for file_name, words in self.get_all_words().items():
-            if word in words:
-                return {file_name: words.index(word) + 1}
-            else:
-                return result
+        for value, key in self.get_all_words().items():
+            if word.lower() in key:
+                result[value] = key.index(word.lower()) + 1
+        return result
+
 
     def count(self, word):
         result2 = {}
@@ -38,18 +37,8 @@ finder1 = WordsFinder('Walt Whitman - O Captain! My Captain!.txt',
                       'Rudyard Kipling - If.txt',
                       'Mother Goose - Monday’s Child.txt')
 print(finder1.get_all_words())
-
 print(finder1.find('the'))
-
 print(finder1.count('the'))
-
-
-
-
-
-
-
-
 
 
 
